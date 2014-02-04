@@ -1,0 +1,23 @@
+<%= simple_form_for(@support_request) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :domain %>
+    <%= f.input :customer_email %>
+    <%= f.input :name %>
+    <%= f.input :phone %>
+    <%= f.input :want_to_cancel %>
+    <%= f.input :balance_due %>
+    <%= f.input :paid %>
+    <%= f.input :transaction_params %>
+    <%= f.input :registrar %>
+    <%= f.input :whois %>
+    <%= f.input :ip_address %>
+    <%= f.input :cpanel_user %>
+    <%= f.input :notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

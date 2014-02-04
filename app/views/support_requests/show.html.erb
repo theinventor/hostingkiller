@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @support_request.domain %>
+</p>
+
+<p>
+  <strong>Customer email:</strong>
+  <%= @support_request.customer_email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @support_request.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @support_request.phone %>
+</p>
+
+<p>
+  <strong>Want to cancel:</strong>
+  <%= @support_request.want_to_cancel %>
+</p>
+
+<p>
+  <strong>Balance due:</strong>
+  <%= @support_request.balance_due %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @support_request.paid %>
+</p>
+
+<p>
+  <strong>Transaction params:</strong>
+  <%= @support_request.transaction_params %>
+</p>
+
+<p>
+  <strong>Registrar:</strong>
+  <%= @support_request.registrar %>
+</p>
+
+<p>
+  <strong>Whois:</strong>
+  <%= @support_request.whois %>
+</p>
+
+<p>
+  <strong>Ip address:</strong>
+  <%= @support_request.ip_address %>
+</p>
+
+<p>
+  <strong>Cpanel user:</strong>
+  <%= @support_request.cpanel_user %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @support_request.notes %>
+</p>
+
+<%= link_to 'Edit', edit_support_request_path(@support_request) %> |
+<%= link_to 'Back', support_requests_path %>

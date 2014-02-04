@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  support_request_id: 1
+  from: MyString
+  body: MyText
+
+two:
+  support_request_id: 1
+  from: MyString
+  body: MyText

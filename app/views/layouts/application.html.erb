@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Web Support" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  <!-- Nav Bar -->
+
+ <div class="row">
+   <div class="large-12 columns">
+     <div class="nav-bar right">
+      <ul class="button-group">
+        <li><a href="/submissions/new" class="button">Open a Case</a></li>
+        <li><a href="/submissions/existing" class="button">Check Existing</a></li>
+
+       </ul>
+     </div>
+     <h1><%= link_to "Web Support", '/' %> </h1>
+     <hr />
+   </div>
+ </div>
+
+ <!-- End Nav -->
+
+
+ <!-- Main Page Content and Sidebar -->
+
+ <div class="row">
+
+   <!-- Main Blog Content -->
+   <div class="large-9 columns" role="content">
+
+
+
+     <article>
+       <%= yield %>
+
+
+     </article>
+
+   </div>
+
+   <!-- End Main Content -->
+
+
+
+ </div>
+
+ <!-- End Main Content and Sidebar -->
+
+
+ <!-- Footer -->
+
+ <footer class="row">
+   <div class="large-12 columns">
+     <hr />
+     <div class="row">
+       <div class="large-6 columns">
+         <p>© Really Clicking 2014</p>
+       </div>
+       <div class="large-6 columns">
+
+       </div>
+     </div>
+   </div>
+ </footer>
+
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

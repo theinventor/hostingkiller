@@ -1,0 +1,13 @@
+dump.rdb
+.metadata
+.rvmrc
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+.idea/*
+db/b003.dump
+config/database.yml
+config/database-troy.yml
+latest.dump
+.DS_Store
