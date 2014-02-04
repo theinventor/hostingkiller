@@ -20,50 +20,26 @@
   <%= @support_request.phone %>
 </p>
 
-<p>
-  <strong>Want to cancel:</strong>
-  <%= @support_request.want_to_cancel %>
-</p>
+<h3>Comments</h3>
+<h4>New Comment</h4>
+<%= simple_form_for @support_request.comments.build, url: submission_comments_path(@support_request.id) do |f| %>
+<%= f.input :body %>
+<%= f.input :from, as: :hidden, input_html: {value: @support_request.customer_email} %>
+<%= f.input :support_request_id, as: :hidden, input_html: {value: @support_request.id} %>
+<%= f.button :submit %>
+<% end %>
 
-<p>
-  <strong>Balance due:</strong>
-  <%= @support_request.balance_due %>
-</p>
+<h4>Past Comments</h4>
+<table class="table">
+  <tr>
+    <th width="25%">Envelope</th>
+    <th>Body</th>
+  </tr>
+<% @support_request.comments.order('id DESC').each do |comment| %>
+    <tr>
+      <td><%= comment.from %> - <%= comment.created_at.to_s %></td>
+      <td><%= comment.body %></td>
+    </tr>
+<% end %>
 
-<p>
-  <strong>Paid:</strong>
-  <%= @support_request.paid %>
-</p>
-
-<p>
-  <strong>Transaction params:</strong>
-  <%= @support_request.transaction_params %>
-</p>
-
-<p>
-  <strong>Registrar:</strong>
-  <%= @support_request.registrar %>
-</p>
-
-<p>
-  <strong>Whois:</strong>
-  <%= @support_request.whois %>
-</p>
-
-<p>
-  <strong>Ip address:</strong>
-  <%= @support_request.ip_address %>
-</p>
-
-<p>
-  <strong>Cpanel user:</strong>
-  <%= @support_request.cpanel_user %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @support_request.notes %>
-</p>
-
-<%= link_to 'Edit', edit_support_request_path(@support_request) %> |
-<%= link_to 'Back', support_requests_path %>
+</table>

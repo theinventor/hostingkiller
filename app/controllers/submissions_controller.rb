@@ -11,6 +11,14 @@ class SubmissionsController < ApplicationController
   def show
   end
 
+  def notify
+    #todo
+  end
+
+  def existing
+
+  end
+
   # GET /support_requests/new
   def new
     @support_request = SupportRequest.new
@@ -63,7 +71,7 @@ class SubmissionsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_support_request
-    @support_request = SupportRequest.find(params[:id])
+    @support_request = SupportRequest.find_by_token(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

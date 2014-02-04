@@ -10,12 +10,9 @@
       <th>Want to cancel</th>
       <th>Balance due</th>
       <th>Paid</th>
-      <th>Transaction params</th>
       <th>Registrar</th>
-      <th>Whois</th>
       <th>Ip address</th>
       <th>Cpanel user</th>
-      <th>Notes</th>
       <th></th>
       <th></th>
       <th></th>
@@ -32,12 +29,9 @@
         <td><%= support_request.want_to_cancel %></td>
         <td><%= support_request.balance_due %></td>
         <td><%= support_request.paid %></td>
-        <td><%= support_request.transaction_params %></td>
         <td><%= support_request.registrar %></td>
-        <td><%= support_request.whois %></td>
         <td><%= support_request.ip_address %></td>
         <td><%= support_request.cpanel_user %></td>
-        <td><%= support_request.notes %></td>
         <td><%= link_to 'Show', support_request %></td>
         <td><%= link_to 'Edit', edit_support_request_path(support_request) %></td>
         <td><%= link_to 'Destroy', support_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>

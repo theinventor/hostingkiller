@@ -1,69 +1,106 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Domain:</strong>
-  <%= @support_request.domain %>
-</p>
+<%= link_to 'Recheck Whois/IP (costs money)', recheck_support_request_path(@support_request), class: 'button alert', style: 'float:right;' %>
+<div class="row">
+  <div class="three columns">
+    <p>
+      <strong>Domain:</strong>
+      <%= @support_request.domain %>
+    </p>
 
-<p>
-  <strong>Customer email:</strong>
-  <%= @support_request.customer_email %>
-</p>
+    <p>
+      <strong>Customer email:</strong>
+      <%= @support_request.customer_email %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @support_request.name %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @support_request.name %>
+    </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @support_request.phone %>
-</p>
+    <p>
+      <strong>Phone:</strong>
+      <%= @support_request.phone %>
+    </p>
 
-<p>
-  <strong>Want to cancel:</strong>
-  <%= @support_request.want_to_cancel %>
-</p>
+    <p>
+      <strong>Want to cancel:</strong>
+      <%= @support_request.want_to_cancel %>
+    </p>
 
-<p>
-  <strong>Balance due:</strong>
-  <%= @support_request.balance_due %>
-</p>
+  </div>
 
-<p>
-  <strong>Paid:</strong>
-  <%= @support_request.paid %>
-</p>
+  <div class="three columns">
 
-<p>
-  <strong>Transaction params:</strong>
-  <%= @support_request.transaction_params %>
-</p>
+    <p>
+      <strong>Balance due:</strong>
+      <%= @support_request.balance_due %>
+    </p>
 
-<p>
-  <strong>Registrar:</strong>
-  <%= @support_request.registrar %>
-</p>
+    <p>
+      <strong>Paid:</strong>
+      <%= @support_request.paid %>
+    </p>
 
-<p>
-  <strong>Whois:</strong>
-  <%= @support_request.whois %>
-</p>
+    <p>
+      <strong>Transaction params:</strong>
+      <%= @support_request.transaction_params %>
+    </p>
 
-<p>
-  <strong>Ip address:</strong>
-  <%= @support_request.ip_address %>
-</p>
+    <p>
+      <strong>Registrar:</strong>
+      <%= @support_request.registrar %>
+    </p>
 
-<p>
-  <strong>Cpanel user:</strong>
-  <%= @support_request.cpanel_user %>
-</p>
+    <p>
+      <strong>Whois:</strong>
+<pre>
+<%= @support_request.whois %>
+</pre>
+    </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @support_request.notes %>
-</p>
+    <p>
+      <strong>Ip address:</strong>
+      <%= @support_request.ip_address %>
+    </p>
+
+    <p>
+      <strong>Cpanel user:</strong>
+      <%= @support_request.cpanel_user %>
+    </p>
+
+    <p>
+      <strong>Notes:</strong>
+      <%= @support_request.notes %>
+    </p>
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_support_request_path(@support_request) %> |
 <%= link_to 'Back', support_requests_path %>
+
+<h3>Comments</h3>
+<h4>New Comment</h4>
+<%= simple_form_for @support_request.comments.build, url: add_comment_support_request_path(@support_request.id), remote: true do |f| %>
+    <%= f.input :body %>
+    <%= f.input :from, as: :hidden, input_html: {value: 'no-reply@reallyclicking.com'} %>
+    <%= f.input :support_request_id, as: :hidden, input_html: {value: @support_request.id} %>
+    <%= f.button :submit %>
+<% end %>
+
+<h4>Past Comments</h4>
+<table class="table">
+  <tr>
+    <th width="25%">Envelope</th>
+    <th>Body</th>
+  </tr>
+  <% @support_request.comments.order('id DESC').each do |comment| %>
+      <tr>
+        <td><%= comment.from %> - <%= comment.created_at.to_s %></td>
+        <td><%= comment.body %></td>
+      </tr>
+  <% end %>
+
+</table>
+

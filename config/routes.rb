@@ -1,8 +1,18 @@
 Hostingkiller::Application.routes.draw do
-  resources :comments
 
-  resources :support_requests
-  resources :submissions
+  resources :support_requests do
+    member do
+      get :recheck
+      post :add_comment
+    end
+  end
+  resources :submissions do
+    collection do
+      get :existing
+    end
+    resources :comments
+  end
+  match "/paypal/notify" => 'submissions#notify'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
