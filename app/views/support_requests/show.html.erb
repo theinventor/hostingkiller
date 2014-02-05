@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Recheck Whois/IP (costs money)', recheck_support_request_path(@support_request), class: 'button alert', style: 'float:right;' %>
+<%= link_to 'Back to All', support_requests_path, class: 'button', style: 'float:right;' %>
 <%= "<div class='button success' style='float: right; '>Paid!</div>".html_safe if @support_request.paid? %>
 <div class="row">
   <div class="three columns">

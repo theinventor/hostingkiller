@@ -12,7 +12,6 @@
       <th>Paid</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -26,9 +25,8 @@
         <td><%= support_request.phone %></td>
         <td><%= support_request.balance_due %></td>
         <td><%= support_request.paid %></td>
-        <td><%= link_to 'Show', support_request %></td>
-        <td><%= link_to 'Edit', edit_support_request_path(support_request) %></td>
-        <td><%= link_to 'Destroy', support_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', support_request, class: 'button' %></td>
+        <td><%= link_to 'Delete', support_request, method: :delete, data: { confirm: 'Are you sure?' } , class: 'button alert' %></td>
       </tr>
     <% end %>
   </tbody>
