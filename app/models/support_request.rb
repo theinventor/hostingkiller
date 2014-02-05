@@ -9,8 +9,9 @@ class SupportRequest < ActiveRecord::Base
   after_create :email_the_staff
 
   def email_the_staff
-    SupportMailer.comment(sr,"Thanks for submitting a request! Someone will get back to you ASAP.\n\n Domain: #{domain}\nName: #{name}\nPhone: #{phone}").deliver
+    SupportMailer.comment(self,"Thanks for submitting a request! Someone will get back to you ASAP.\n\n Domain: #{domain}\nName: #{name}\nPhone: #{phone}").deliver
   rescue => ex
+    puts "Exception in mail, #{ex.backtrace}"
   end
 
   def generate_token
@@ -22,6 +23,7 @@ class SupportRequest < ActiveRecord::Base
       s = Socket.getaddrinfo(domain,nil)
       result = s[0][3]
     rescue => ex
+      puts "Exception in lookup, #{ex.backtrace}"
     end
     if result and result != ip_address
       update_column :ip_address, result
