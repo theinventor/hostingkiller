@@ -11,3 +11,4 @@ config/database.yml
 config/database-troy.yml
 latest.dump
 .DS_Store
+config/initializers/troy-settings.rb

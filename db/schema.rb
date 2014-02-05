@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203235907) do
+ActiveRecord::Schema.define(version: 20140205153401) do
 
   create_table "comments", force: true do |t|
     t.integer  "support_request_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140203235907) do
     t.boolean  "want_to_cancel"
     t.string   "balance_due"
     t.boolean  "paid"
-    t.text     "transaction_params"
+    t.text     "paypal_params"
     t.string   "registrar"
     t.text     "whois"
     t.string   "ip_address"

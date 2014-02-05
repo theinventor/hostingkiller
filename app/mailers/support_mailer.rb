@@ -8,8 +8,8 @@ class SupportMailer < ActionMailer::Base
   #
   def comment(support_request,body)
 
-    @body = body
+    @body = "#{body}\n\n View/Comment on this request online: #{Rails.env.production? ? PAYPAL_NOTIFY_URL : PAYPAL_NOTIFY_URL_SANDBOX}/submissions/#{support_request.token}"
 
-    mail to: [support_request.customer_email], bcc: [ENV["CC_EMAIL"]], subject: "New Comment from WebSite Support Portal (id: #{support_request.id})"
+    mail to: [support_request.customer_email], bcc: [CC_EMAIL], subject: "New Message from WebSite Support Portal (id: #{support_request.id})"
   end
 end

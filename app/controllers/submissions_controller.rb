@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_support_request, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:notify]
 
   # GET /support_requests
   # GET /support_requests.json
@@ -12,7 +13,18 @@ class SubmissionsController < ApplicationController
   end
 
   def notify
-    #todo
+    puts params
+    sr = SupportRequest.find_by_domain params[:item_number]
+    if sr
+      sr.update_attributes(paid: true, paypal_params: params)
+      begin
+        SupportMailer.comment(sr,"We just got a payment, you are good to go!\n\nDomain: #{sr.domain}").deliver
+      rescue => ex
+      end
+      render text: 'Success' and return
+    else
+      render text: 'Not Found' and return
+    end
   end
 
   def existing
@@ -76,7 +88,7 @@ class SubmissionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def support_request_params
-    params.require(:support_request).permit(:domain, :customer_email, :name, :phone, :want_to_cancel, :balance_due, :paid, :transaction_params, :registrar, :whois, :ip_address, :cpanel_user, :notes)
+    params.require(:support_request).permit(:domain, :customer_email, :name, :phone, :want_to_cancel, :balance_due, :paid, :paypal_params, :registrar, :whois, :ip_address, :cpanel_user, :notes)
   end
 
 end

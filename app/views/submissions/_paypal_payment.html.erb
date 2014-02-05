@@ -1,12 +1,12 @@
-<form name="_xclick" action="<% Rails.env.development? ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : "https://www.paypal.com/cgi-bin/webscr" %>" method="post">
+<form name="_xclick" action="<%= Rails.env.development? ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : "https://www.paypal.com/cgi-bin/webscr" %>" method="post">
 <input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="<%= ENV["PAYPAL_EMAIL"] %>">
+<input type="hidden" name="business" value="<%= Rails.env.production? ? PAYPAL_EMAIL : PAYPAL_EMAIL_SANDBOX %>">
 <input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="item_name" value="<%= @support_request.domain %> -Open Balance# <%= @support_request.amount_due %>">
+<input type="hidden" name="item_name" value="<%= @support_request.domain %> - Open Balance $ <%= @support_request.balance_due %>">
 <input type="hidden" name="item_number" value="<%= @support_request.domain %>">
-<input type="hidden" name="amount" value="<%= @support_request.amount_due %>">
+<input type="hidden" name="amount" value="<%= @support_request.balance_due %>">
 <input type="image" src="http://www.paypal.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-<input type="hidden" name="notify_url" value="http://<%= request.host %>/paypal/notify" />
+<input type="hidden" name="notify_url" value="<%= Rails.env.production? ? PAYPAL_NOTIFY_URL : PAYPAL_NOTIFY_URL_SANDBOX %>/paypal/notify" />
 <input type="hidden" name='rn' value='2'>
 
 </form>

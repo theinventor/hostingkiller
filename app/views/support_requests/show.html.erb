@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Recheck Whois/IP (costs money)', recheck_support_request_path(@support_request), class: 'button alert', style: 'float:right;' %>
+<%= "<div class='button success' style='float: right; '>Paid!</div>".html_safe if @support_request.paid? %>
 <div class="row">
   <div class="three columns">
     <p>
@@ -43,8 +44,13 @@
     </p>
 
     <p>
-      <strong>Transaction params:</strong>
-      <%= @support_request.transaction_params %>
+      <strong>Paypal params:</strong>
+
+      <% if @support_request.paypal_params %>
+       <% @support_request.paypal_params.each do |value| %>
+         <li><%= value[0] %>: <%= value[1] %></li>
+      <% end %>
+      <% end %>
     </p>
 
     <p>

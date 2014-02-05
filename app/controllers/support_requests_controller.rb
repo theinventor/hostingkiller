@@ -11,6 +11,7 @@ class SupportRequestsController < ApplicationController
   # GET /support_requests/1
   # GET /support_requests/1.json
   def show
+
   end
 
   def recheck
@@ -90,7 +91,7 @@ class SupportRequestsController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
   def support_request_params
-    params.require(:support_request).permit(:domain, :customer_email, :name, :phone, :want_to_cancel, :balance_due, :paid, :transaction_params, :registrar, :whois, :ip_address, :cpanel_user, :notes)
+    params.require(:support_request).permit(:domain, :customer_email, :name, :phone, :want_to_cancel, :balance_due, :paid, :paypal_params, :registrar, :whois, :ip_address, :cpanel_user, :notes)
   end
   def comment_params
     params.require(:comment).permit(:support_request_id, :from, :body)
