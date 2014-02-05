@@ -5,4 +5,4 @@ PAYPAL_EMAIL_SANDBOX = ENV['PAYPAL_EMAIL_SANDBOX'] || 'troy+biz@rsandybox.com'
 PAYPAL_NOTIFY_URL = ENV['PAYPAL_NOTIFY_URL'] || 'http://thelivesite.com'
 PAYPAL_NOTIFY_URL_SANDBOX = ENV['PAYPAL_NOTIFY_URL_SANDBOX'] || 'http://yourpostbacktesturl.com'
 SITE_PASSWORD = ENV['SITE_PASSWORD'] || 'secret'
-
+HOME_PAGE_TEXT = ENV['HOME_PAGE_TEXT'] || ""
