@@ -6,6 +6,12 @@ class SupportRequest < ActiveRecord::Base
   serialize :paypal_params
 
   before_create :generate_token
+  after_create :email_the_staff
+
+  def email_the_staff
+    SupportMailer.comment(sr,"Thanks for submitting a request! Someone will get back to you ASAP.\n\n Domain: #{domain}\nName: #{name}\nPhone: #{phone}").deliver
+  rescue => ex
+  end
 
   def generate_token
     self.token = SecureRandom.uuid
@@ -22,8 +28,8 @@ class SupportRequest < ActiveRecord::Base
     end
 
     begin
-    client = RoboWhois.new(:api_key => ROBOWHOIS_KEY)
-    response = client.whois(domain)
+      client = RoboWhois.new(:api_key => ROBOWHOIS_KEY)
+      response = client.whois(domain)
     rescue
     end
 

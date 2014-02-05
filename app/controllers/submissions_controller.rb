@@ -47,7 +47,7 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @support_request.save
-        format.html { redirect_to @support_request, notice: 'Support request was successfully created.' }
+        format.html { redirect_to submission_path(@support_request.token), notice: 'Support request was successfully created.' }
         format.json { render action: 'show', status: :created, location: @support_request }
       else
         format.html { render action: 'new' }
@@ -61,7 +61,7 @@ class SubmissionsController < ApplicationController
   def update
     respond_to do |format|
       if @support_request.update(support_request_params)
-        format.html { redirect_to @support_request, notice: 'Support request was successfully updated.' }
+        format.html { redirect_to submission_path(@support_request.token), notice: 'Support request was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
