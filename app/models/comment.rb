@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  belongs_to :support_request
+  belongs_to :support_request, touch: true
 
   validates_presence_of :body,:from,:support_request_id
 

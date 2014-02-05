@@ -3,16 +3,13 @@
 <table>
   <thead>
     <tr>
+      <th>Updated</th>
       <th>Domain</th>
       <th>Customer email</th>
       <th>Name</th>
       <th>Phone</th>
-      <th>Want to cancel</th>
       <th>Balance due</th>
       <th>Paid</th>
-      <th>Registrar</th>
-      <th>Ip address</th>
-      <th>Cpanel user</th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,16 +19,13 @@
   <tbody>
     <% @support_requests.each do |support_request| %>
       <tr>
+        <td><%= support_request.updated_at %></td>
         <td><%= support_request.domain %></td>
         <td><%= support_request.customer_email %></td>
         <td><%= support_request.name %></td>
         <td><%= support_request.phone %></td>
-        <td><%= support_request.want_to_cancel %></td>
         <td><%= support_request.balance_due %></td>
         <td><%= support_request.paid %></td>
-        <td><%= support_request.registrar %></td>
-        <td><%= support_request.ip_address %></td>
-        <td><%= support_request.cpanel_user %></td>
         <td><%= link_to 'Show', support_request %></td>
         <td><%= link_to 'Edit', edit_support_request_path(support_request) %></td>
         <td><%= link_to 'Destroy', support_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
