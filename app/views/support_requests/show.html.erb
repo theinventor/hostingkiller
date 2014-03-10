@@ -93,7 +93,7 @@
     <%= f.input :body %>
     <%= f.input :from, as: :hidden, input_html: {value: 'no-reply@reallyclicking.com'} %>
     <%= f.input :support_request_id, as: :hidden, input_html: {value: @support_request.id} %>
-    <%= f.button :submit %>
+    <%= f.button :submit, disable_with: "Processing..." %>
 <% end %>
 
 <h4>Past Comments</h4>
