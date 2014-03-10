@@ -5,7 +5,7 @@ class SupportRequestsController < ApplicationController
   # GET /support_requests
   # GET /support_requests.json
   def index
-    @support_requests = SupportRequest.order('updated_at DESC')
+    @support_requests = SupportRequest.order('updated_at DESC').where(disabled: false)
   end
 
   # GET /support_requests/1
