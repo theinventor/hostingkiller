@@ -5,7 +5,7 @@ class SupportRequestsController < ApplicationController
   # GET /support_requests
   # GET /support_requests.json
   def index
-    @support_requests = SupportRequest.order('updated_at DESC')
+    @support_requests = SupportRequest.order('updated_at DESC').where(disabled: false)
   end
 
   # GET /support_requests/1
@@ -76,7 +76,7 @@ class SupportRequestsController < ApplicationController
 # DELETE /support_requests/1
 # DELETE /support_requests/1.json
   def destroy
-    @support_request.destroy
+    @support_request.update_column :disabled, true
     respond_to do |format|
       format.html { redirect_to support_requests_url }
       format.json { head :no_content }
