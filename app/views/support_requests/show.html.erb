@@ -89,7 +89,7 @@
 
 <h3>Comments</h3>
 <h4>New Comment</h4>
-<%= simple_form_for @support_request.comments.build, url: add_comment_support_request_path(@support_request.id), remote: true do |f| %>
+<%= simple_form_for @support_request.comments.build, url: add_comment_support_request_path(@support_request.id) do |f| %>
     <%= f.input :body %>
     <%= f.input :from, as: :hidden, input_html: {value: 'no-reply@reallyclicking.com'} %>
     <%= f.input :support_request_id, as: :hidden, input_html: {value: @support_request.id} %>

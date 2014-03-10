@@ -5,7 +5,7 @@ class SupportRequestsController < ApplicationController
   # GET /support_requests
   # GET /support_requests.json
   def index
-    @support_requests = SupportRequest.order('updated_at DESC').where(disabled: false)
+    @support_requests = SupportRequest.order('updated_at DESC')
   end
 
   # GET /support_requests/1
@@ -23,7 +23,7 @@ class SupportRequestsController < ApplicationController
     @comment = @support_request.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
+        format.html { redirect_to (request.referrer || @support_request), notice: 'Comment was successfully created.' }
         format.js {}
         format.json { render action: 'show', status: :created, location: @comment }
       else
