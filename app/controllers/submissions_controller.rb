@@ -52,6 +52,9 @@ class SubmissionsController < ApplicationController
 
   # GET /support_requests/new
   def new
+    unless params[:human] == 'yep'
+      render text: 'Please be a human' and return
+    end
     @support_request = SupportRequest.new
   end
 
