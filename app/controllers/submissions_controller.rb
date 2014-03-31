@@ -7,6 +7,25 @@ class SubmissionsController < ApplicationController
   def index
   end
 
+  def start
+    @first_number = rand(1..99)
+    @second_number = rand(1..5)
+    @answer = @first_number + @second_number
+
+    if params[:human]
+
+      first_num = params[:human][:first_number].to_i
+      second_num = params[:human][:second_number].to_i
+      answer = first_num + second_num
+      if params[:human][:answer].to_i == answer
+        redirect_to new_submission_path(human: 'yep') and return
+      else
+        render text: 'Sorry, please be a human' and return
+      end
+    end
+
+  end
+
   # GET /support_requests/1
   # GET /support_requests/1.json
   def show

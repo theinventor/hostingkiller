@@ -1,0 +1,9 @@
+<h1>Please prove you are human first..</h1>
+<%= simple_form_for :human, url: request.fullpath do |f| %>
+
+    <h2>What is <%= @first_number %> + <%= @second_number %>?</h2>
+    <%= f.input :first_number, as: :hidden, input_html: {value: @first_number} %>
+    <%= f.input :second_number, as: :hidden, input_html: {value: @second_number} %>
+    <%= f.input :answer, placeholder: 'answer here' %>
+    <%= f.submit 'Next', class: 'button' %>
+<% end %>

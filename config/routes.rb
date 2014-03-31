@@ -9,6 +9,8 @@ Hostingkiller::Application.routes.draw do
   resources :submissions do
     collection do
       get :existing
+      get :start
+      post :start
     end
     resources :comments
   end
